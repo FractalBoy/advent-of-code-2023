@@ -84,8 +84,8 @@ impl Day2 {
     fn parse_games(&self, input: &str) -> Vec<Game> {
         let mut games = Vec::new();
 
-        for line in input.split('\n') {
-            if line.len() == 0 {
+        for line in input.lines() {
+            if line.is_empty() {
                 continue;
             }
 
@@ -158,7 +158,7 @@ impl Solver for Day2 {
 #[cfg(test)]
 mod tests {
     use crate::aoc::Solver;
-    use crate::Day2;
+    use crate::day2::Day2;
 
     const INPUT: &str = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue

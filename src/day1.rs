@@ -100,7 +100,7 @@ impl Solver for Day1 {
     fn solve_part_1(&self, input: &str) -> String {
         let mut sum = 0;
 
-        for line in input.split("\n") {
+        for line in input.lines() {
             let mut first: Option<char> = Option::None;
             let mut last: Option<char> = Option::None;
 
@@ -175,7 +175,7 @@ impl Solver for Day1 {
 #[cfg(test)]
 mod tests {
     use crate::aoc::Solver;
-    use crate::Day1;
+    use crate::day1::Day1;
 
     #[test]
     fn part_1() {
