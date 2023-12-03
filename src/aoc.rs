@@ -32,7 +32,7 @@ async fn get_input_for_day(day: i32) -> Result<String> {
         .await
 }
 
-pub async fn solve<'a>(part: Part, solver: &Box<&(dyn Solver + 'a)>) -> Result<()> {
+pub async fn solve(part: Part, solver: &Box<dyn Solver>) -> Result<()> {
     get_input_for_day(solver.day()).await.map(|input| {
         let solution = match part {
             Part::Part1 => solver.solve_part_1(&input),

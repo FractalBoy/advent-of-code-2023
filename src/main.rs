@@ -1,9 +1,11 @@
 mod aoc;
 mod day1;
+mod day2;
 
 use aoc::Solver;
 use clap::Parser;
 use day1::Day1;
+use day2::Day2;
 use std::collections::HashMap;
 
 #[derive(Parser)]
@@ -20,17 +22,18 @@ struct Args {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
-    let dispatch_table = HashMap::from([(1, Day1::new())]);
+    let dispatch_table: HashMap<i32, Box<dyn Solver>> = HashMap::from([
+        (1, Box::new(Day1::new()) as Box<dyn Solver>),
+        (2, Box::new(Day2::new()) as Box<dyn Solver>),
+    ]);
 
     if let Some(solver) = dispatch_table.get(&args.day) {
-        let solver: Box<&dyn Solver> = Box::new(solver as &dyn Solver);
-
         if args.part_1 {
-            aoc::solve(aoc::Part::Part1, &solver).await?;
+            aoc::solve(aoc::Part::Part1, solver).await?;
         }
 
         if args.part_2 {
-            aoc::solve(aoc::Part::Part2, &solver).await?;
+            aoc::solve(aoc::Part::Part2, solver).await?;
         }
 
         if !args.part_1 && !args.part_2 {
