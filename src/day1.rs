@@ -174,8 +174,8 @@ impl Solver for Day1 {
 
 #[cfg(test)]
 mod tests {
+    use super::Day1;
     use crate::aoc::Solver;
-    use crate::day1::Day1;
 
     #[test]
     fn part_1() {

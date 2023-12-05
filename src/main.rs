@@ -2,12 +2,14 @@ mod aoc;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 use aoc::Solver;
 use clap::Parser;
 use day1::Day1;
 use day2::Day2;
 use day3::Day3;
+use day4::Day4;
 use std::collections::HashMap;
 
 #[derive(Parser)]
@@ -28,6 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         (1, Box::new(Day1::new()) as Box<dyn Solver>),
         (2, Box::new(Day2::new()) as Box<dyn Solver>),
         (3, Box::new(Day3::new()) as Box<dyn Solver>),
+        (4, Box::new(Day4::new()) as Box<dyn Solver>),
     ]);
 
     if let Some(solver) = dispatch_table.get(&args.day) {

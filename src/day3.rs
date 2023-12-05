@@ -206,8 +206,8 @@ impl Solver for Day3 {
 
 #[cfg(test)]
 mod tests {
+    use super::Day3;
     use crate::aoc::Solver;
-    use crate::day3::Day3;
 
     const INPUT: &str = "467..114..
 ...*......
