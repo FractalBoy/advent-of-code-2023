@@ -1,3 +1,5 @@
+use std::time::Instant;
+
 use dotenv::dotenv;
 use reqwest::{self, Result};
 
@@ -34,10 +36,13 @@ async fn get_input_for_day(day: i32) -> Result<String> {
 
 pub async fn solve(part: Part, solver: &Box<dyn Solver>) -> Result<()> {
     get_input_for_day(solver.day()).await.map(|input| {
+        let start = Instant::now();
         let solution = match part {
             Part::Part1 => solver.solve_part_1(&input),
             Part::Part2 => solver.solve_part_2(&input),
         };
+        let duration = start.elapsed();
         println!("{}", solution);
+        println!("Solution took {} seconds", duration.as_secs_f64());
     })
 }
