@@ -1,5 +1,6 @@
 mod aoc;
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -12,6 +13,7 @@ mod day9;
 use aoc::Solver;
 use clap::Parser;
 use day1::Day1;
+use day10::Day10;
 use day2::Day2;
 use day3::Day3;
 use day4::Day4;
@@ -46,6 +48,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         (7, Box::new(Day7::new()) as Box<dyn Solver>),
         (8, Box::new(Day8::new()) as Box<dyn Solver>),
         (9, Box::new(Day9::new()) as Box<dyn Solver>),
+        (10, Box::new(Day10::new()) as Box<dyn Solver>),
     ]);
 
     if let Some(solver) = dispatch_table.get(&args.day) {
